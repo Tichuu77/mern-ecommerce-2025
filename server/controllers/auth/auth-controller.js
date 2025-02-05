@@ -68,7 +68,7 @@ const loginUser = async (req, res) => {
       { expiresIn: "60m" }
     );
 
-    res.cookie("token", token, { httpOnly: true, secure: false }).json({
+    res.status(200).json({
       success: true,
       message: "Logged in successfully",
       user: {
@@ -77,6 +77,7 @@ const loginUser = async (req, res) => {
         id: checkUser._id,
         userName: checkUser.userName,
       },
+      token,
     });
   } catch (e) {
     console.log(e);
@@ -98,7 +99,8 @@ const logoutUser = (req, res) => {
 
 //auth middleware
 const authMiddleware = async (req, res, next) => {
-  const token = req.cookies.token;
+  const authHeader = req.headers['authorization']
+  const token = authHeader && authHeader.split(' ')[1];
   if (!token)
     return res.status(401).json({
       success: false,
