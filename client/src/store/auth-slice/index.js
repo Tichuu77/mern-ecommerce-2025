@@ -27,7 +27,9 @@ export const loginUser = createAsyncThunk(
   "/auth/login",
 
   async (formData) => {
+    console.log(`${import.meta.env.VITE_API_URl}/api/auth/login`)
     const response = await axios.post(
+      
       `${import.meta.env.VITE_API_URl}/api/auth/login`,
       formData,
       {
@@ -59,8 +61,9 @@ export const checkAuth = createAsyncThunk(
   "/auth/checkauth",
 
   async () => {
+   
     const response = await axios.get(
-      `${import.meta.env.VITE_API_URl}/api/auth/check-auth`,
+      `${import.meta.env.VITE_API_URL}/api/auth/check-auth`,
       {
         withCredentials: true,
         headers: {
