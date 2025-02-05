@@ -17,7 +17,7 @@ function ShoppingCheckout() {
   const dispatch = useDispatch();
   const { toast } = useToast();
 
-  console.log(currentSelectedAddress, "cartItems");
+  
 
   const totalCartAmount =
     cartItems && cartItems.items && cartItems.items.length > 0
