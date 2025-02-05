@@ -30,13 +30,13 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = JSON.parse(sessionStorage.getItem('token'))
+    const token =sessionStorage.getItem('token')
     dispatch(checkAuth(token));
   }, [dispatch]);
 
   if (isLoading) return <Skeleton className="w-[800] bg-black h-[600px]" />;
 
-  console.log(isLoading, user);
+ 
 
   return (
     <div className="flex flex-col overflow-hidden bg-white">

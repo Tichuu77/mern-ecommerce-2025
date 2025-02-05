@@ -63,11 +63,11 @@ export const checkAuth = createAsyncThunk(
   "/auth/checkauth",
 
   async (token) => {
+   console.log('token',token)
    
     const response = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/auth/check-auth`,
+      `${import.meta.env.VITE_API_URl}/api/auth/check-auth`,
       {
-         
         headers: {
           Authorization: `Bearer ${token}`,
           "Cache-Control":
@@ -75,7 +75,7 @@ export const checkAuth = createAsyncThunk(
         },
       }
     );
-
+  console.log(response)
     return response.data;
   }
 );
@@ -116,7 +116,7 @@ const authSlice = createSlice({
         state.user = action.payload.success ? action.payload.user : null;
         state.isAuthenticated = action.payload.success;
         state.token=action.payload.token;
-        sessionStorage.setItem('token',JSON.stringify(action.payload.token))
+        sessionStorage.setItem('token', action.payload.token);
       })
       .addCase(loginUser.rejected, (state) => {
         state.isLoading = false;
