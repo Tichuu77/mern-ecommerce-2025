@@ -63,7 +63,7 @@ export const checkAuth = createAsyncThunk(
   "/auth/checkauth",
 
   async (token) => {
-   console.log('token',token)
+   
    
     const response = await axios.get(
       `${import.meta.env.VITE_API_URl}/api/auth/check-auth`,

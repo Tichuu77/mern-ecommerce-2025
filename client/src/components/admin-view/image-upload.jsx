@@ -17,13 +17,12 @@ function ProductImageUpload({
   isCustomStyling = false,
 }) {
   const inputRef = useRef(null);
-
-  console.log(isEditMode, "isEditMode");
+ 
 
   function handleImageFileChange(event) {
-    console.log(event.target.files, "event.target.files");
+    
     const selectedFile = event.target.files?.[0];
-    console.log(selectedFile);
+  
 
     if (selectedFile) setImageFile(selectedFile);
   }
@@ -53,7 +52,7 @@ function ProductImageUpload({
       `${import.meta.env.VITE_API_URl}/api/admin/products/upload-image`,
       data
     );
-    console.log(response, "response");
+   
 
     if (response?.data?.success) {
       setUploadedImageUrl(response.data.result.url);
